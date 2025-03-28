@@ -4,8 +4,8 @@ import Landing from './pages/Landing';
 
 const queryClient = new QueryClient();
 
-// Use a static base URL for now
-const base = '/2nd';
+// Use the same base URL as Vite config
+const base = '/2nd/';
 
 function App() {
   return (
