@@ -2,12 +2,13 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   base: '/2nd/',
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   build: {
@@ -15,17 +16,16 @@ export default defineConfig({
     emptyOutDir: true,
     assetsDir: 'assets',
     rollupOptions: {
-      input: 'index.html',
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      },
       output: {
-        entryFileNames: `assets/[name].[hash].js`,
-        chunkFileNames: `assets/[name].[hash].js`,
-        assetFileNames: `assets/[name].[hash].[ext]`
-      }
-    }
+        manualChunks: undefined,
+      },
+    },
   },
   server: {
     port: 3000,
     open: true,
-    base: '/2nd/'
-  }
+  },
 });
